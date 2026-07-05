@@ -935,7 +935,7 @@
                   <span data-lang="en">Çokokrem</span>
                 </h3>
                 <p class="product-desc">
-                  <span data-lang="ja" class="visible">世界中で親しまれているヌテラなどのチョコレートスプレッドの原料となるヘーゼルナッツの大部分は、実はトルコ産です。ÜlkerのÇokokremは、そのトルコで最も愛されているチョコレートスプレッドです。。</span>
+                  <span data-lang="ja" class="visible">世界中で親しまれているヌテラなどのチョコレートスプレッドの原料となるヘーゼルナッツの大部分は、実はトルコ産です。ÜlkerのÇokokremは、そのトルコで最も愛されているチョコレートスプレッドです。</span>
                   <span data-lang="tr">Nutella gibi dünyanın dört bir yanında sevilen çikolatalı kremlerin yapımında kullanılan fındıkların büyük çoğunluğu Türkiye'den gelmektedir. Ülker'in Çokokrem'i ise Türkiye'nin en sevilen çikolatalı kremasıdır — dünyanın bağımlı olduğu o fındıklarla üretilen eşsiz bir lezzet.</span>
                   <span data-lang="en">Did you know that most of the hazelnuts used in chocolate spreads like Nutella around the world come from Turkey? Ülker's Çokokrem is Turkey's most beloved chocolate spread, made with the very nuts that the world depends on.</span>
                 </p>
@@ -977,24 +977,28 @@
                 alt="Siyah poşet çay" loading="lazy" />
               <div class="product-body">
                 <p class="product-tag">
-                  <span data-lang="ja" class="visible">紅茶・Tadım</span>
-                  <span data-lang="tr">Siyah Çay</span>
-                  <span data-lang="en">Black Tea</span>
+                  <span data-lang="ja" class="visible">紅茶・Çaykur</span>
+                  <span data-lang="tr">Siyah Çay · Çaykur</span>
+                  <span data-lang="en">Black Tea · Çaykur</span>
                 </p>
                 <h3 class="product-name">
-                  <span data-lang="ja" class="visible">紅茶</span>
-                  <span data-lang="tr">Siyah Çay</span>
-                  <span data-lang="en">Black Tea</span>
+                  <span data-lang="ja" class="visible">Çaykur ティーバッグ 黒茶</span>
+                  <span data-lang="tr">Çaykur Demlik Poşet Çay</span>
+                  <span data-lang="en">Çaykur Black Tea Bags</span>
                 </h3>
                 <p class="product-desc">
-                  <span data-lang="ja" class="visible">世界一お茶を飲む国トルコの国営企業チャイクルから、トルコ人の日常に欠かせない紅茶。普段あまり紅茶飲まない日本人でも一度飲むとくせになります。</span>
-                  <span data-lang="tr">Dünyanın en çok çay içen ülkesi Türkiye'nin devlet kuruluşu ÇAYKUR'dan, Türkiye'nin günlük yaşamının vazgeçilmezi siyah çay.</span>
-                  <span data-lang="en">From ÇAYKUR, Turkey's state-owned tea producer, comes the black tea that is an essential part of everyday life in Turkey—the world's most tea drinking country.</span>
+                  <span data-lang="ja" class="visible">トルコは世界一のお茶消費国。トルコ人は朝から晩まで一日中お茶を飲み続けます。そのトルコ最大の紅茶メーカーÇaykurが手がけるティーバッグ。黒海沿岸リゼ産の茶葉を使った、力強くコクのある本場の味です。</span>
+                  <span data-lang="tr">Türkiye, dünyanın en fazla çay tüketen ülkesidir. Türkler sabahtan akşama, günün her saatinde çay içer. Türkiye'nin en büyük çay üreticisi Çaykur'un demlik poşet çayı; Karadeniz kıyısı Rize'nin eşsiz yapraklarından hazırlanmış, güçlü ve derin lezzetiyle gerçek bir Türk çayı deneyimi sunar.</span>
+                  <span data-lang="en">Turkey is the world's highest tea-consuming country, and Turks drink it all day, every day — from breakfast to bedtime. Çaykur, Turkey's largest tea producer, brings that culture to your cup with robust black tea bags made from the finest leaves grown along the Black Sea coast of Rize.</span>
                 </p>
               </div>
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <div class="carousel-controls">
         <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
         <div class="carousel-dots" id="carouselDots"></div>
         <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
@@ -1023,7 +1027,8 @@
         </p>
       </div>
 
-      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+      <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)" name="contact" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="ea2a9cee-52ac-4fc9-9358-1fcbc939a7e1" />
         <div class="form-row">
           <div class="form-group">
             <label>
@@ -1345,24 +1350,21 @@
     });
 
     // ── FORM ──
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
 
       const nameField  = document.getElementById('fieldName');
       const emailField = document.getElementById('fieldEmail');
+      const msgField   = document.getElementById('fieldMessage');
       const errorName  = document.getElementById('errorName');
       const errorEmail = document.getElementById('errorEmail');
-
-      const msgField   = document.getElementById('fieldMessage');
       const errorMsg   = document.getElementById('errorMessage');
 
       let valid = true;
 
-      // Validate name
       if (!nameField.value.trim()) {
         nameField.classList.add('invalid');
         errorName.classList.add('visible');
-        // sync error message language
         errorName.querySelectorAll('[data-lang]').forEach(el => {
           el.classList.toggle('visible', el.dataset.lang === currentLang);
         });
@@ -1372,7 +1374,6 @@
         errorName.classList.remove('visible');
       }
 
-      // Validate email
       const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
       if (!emailOk) {
         emailField.classList.add('invalid');
@@ -1386,7 +1387,6 @@
         errorEmail.classList.remove('visible');
       }
 
-      // Validate message
       if (!msgField.value.trim()) {
         msgField.classList.add('invalid');
         errorMsg.classList.add('visible');
@@ -1401,13 +1401,32 @@
 
       if (!valid) return;
 
-      // Success
-      const success = document.getElementById('formSuccess');
-      success.style.display = 'block';
-      success.querySelectorAll('[data-lang]').forEach(el => {
-        el.classList.toggle('visible', el.dataset.lang === currentLang);
-      });
-      e.target.querySelectorAll('input,select,textarea').forEach(f => f.value = '');
+      const submitBtn = e.target.querySelector('.form-submit');
+      submitBtn.disabled = true;
+
+      try {
+        const formData = new FormData(e.target);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          const success = document.getElementById('formSuccess');
+          success.style.display = 'block';
+          success.querySelectorAll('[data-lang]').forEach(el => {
+            el.classList.toggle('visible', el.dataset.lang === currentLang);
+          });
+          e.target.querySelectorAll('input:not([type=hidden]),select,textarea').forEach(f => f.value = '');
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+      }
     }
 
     // Clear errors on input
