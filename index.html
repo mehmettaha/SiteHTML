@@ -23,7 +23,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 
     body {
       font-family: 'Noto Sans JP', 'Noto Sans', 'Lato', sans-serif;
@@ -99,7 +99,7 @@
       padding: 0.3rem 0.75rem;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 0.78rem;
+      font-size: 0.84rem;
       letter-spacing: 0.05em;
       font-family: 'Lato', sans-serif;
       transition: all 0.25s;
@@ -154,7 +154,7 @@
     }
 
     .hero-eyebrow {
-      font-size: 0.72rem;
+      font-size: 0.79rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold-light);
@@ -176,7 +176,7 @@
     }
 
     .hero-desc {
-      font-size: clamp(0.88rem, 1.5vw, 1rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.0625rem);
       color: rgba(255,255,255,0.85);
       line-height: 1.75;
       max-width: 600px;
@@ -190,7 +190,7 @@
       color: var(--navy);
       font-family: 'Lato', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.975rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 0.85rem 2.2rem;
@@ -263,7 +263,7 @@
     }
 
     .about-tagline {
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--turquoise);
@@ -280,7 +280,7 @@
     }
 
     .about-text {
-      font-size: 0.95rem;
+      font-size: 1.0125rem;
       color: var(--text-mid);
       line-height: 1.8;
       font-weight: 300;
@@ -326,13 +326,13 @@
     .trust-label {
       font-family: 'Playfair Display', serif;
       color: var(--gold);
-      font-size: 1rem;
+      font-size: 1.0625rem;
       margin-bottom: 0.3rem;
     }
 
     .trust-desc {
       color: rgba(255,255,255,0.6);
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       line-height: 1.6;
       font-weight: 300;
     }
@@ -344,7 +344,7 @@
     }
 
     .section-eyebrow {
-      font-size: 0.72rem;
+      font-size: 0.79rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--turquoise);
@@ -361,7 +361,7 @@
 
     .section-subtitle {
       color: var(--text-mid);
-      font-size: 0.9rem;
+      font-size: 0.975rem;
       margin-top: 0.4rem;
       font-weight: 300;
       line-height: 1.6;
@@ -372,10 +372,10 @@
       padding: 2rem 2rem 0;
       background: var(--cream);
       scroll-snap-align: start;
-      scroll-snap-type: y proximity;
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .carousel-wrap {
@@ -383,21 +383,33 @@
       margin: 0 auto;
       position: relative;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .carousel-section .section-header {
+      flex-shrink: 0;
     }
 
     .carousel-track-outer {
       overflow: hidden;
       border-radius: 4px;
+      flex: 1;
+      min-height: 0;
     }
 
     .carousel-track {
       display: flex;
+      height: 100%;
       transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
     }
 
     .product-card {
       flex-shrink: 0;
       padding: 0 0.75rem;
+      height: 100%;
     }
 
     .product-inner {
@@ -410,18 +422,21 @@
 
     .product-img {
       width: 100%;
-      height: 260px;
+      flex: 1;
+      min-height: 0;
       object-fit: cover;
       display: block;
       background-color: #e8e0d4;
+      cursor: zoom-in;
     }
 
     .product-body {
       padding: 1rem 1.25rem;
+      flex-shrink: 0;
     }
 
     .product-tag {
-      font-size: 0.65rem;
+      font-size: 0.72rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--turquoise);
@@ -437,7 +452,7 @@
     }
 
     .product-desc {
-      font-size: 0.875rem;
+      font-size: 0.9375rem;
       color: var(--text-mid);
       line-height: 1.75;
       font-weight: 300;
@@ -494,8 +509,7 @@
 
     .contact-section {
       scroll-snap-align: start;
-      scroll-snap-type: y proximity;
-      padding: 5rem 2rem;
+      padding: 2.5rem 2rem;
       background: var(--navy);
     }
 
@@ -527,7 +541,7 @@
     }
 
     .form-group label {
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.5);
@@ -542,7 +556,7 @@
       color: var(--white);
       padding: 0.8rem 1rem;
       border-radius: 3px;
-      font-size: 0.95rem;
+      font-size: 1.0125rem;
       font-family: 'Noto Sans JP', 'Lato', sans-serif;
       transition: border-color 0.2s, background 0.2s;
       outline: none;
@@ -573,7 +587,7 @@
     }
 
     .form-error {
-      font-size: 0.75rem;
+      font-size: 0.8125rem;
       color: #e05555;
       margin-top: 0.25rem;
       display: none;
@@ -588,7 +602,7 @@
       color: var(--navy);
       font-family: 'Lato', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.975rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 1rem 2.5rem;
@@ -605,7 +619,7 @@
     }
 
     .form-note {
-      font-size: 0.78rem;
+      font-size: 0.84rem;
       color: rgba(255,255,255,0.35);
       margin-top: 0.5rem;
       font-weight: 300;
@@ -647,7 +661,7 @@
     .footer-links a {
       color: rgba(255,255,255,0.45);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       letter-spacing: 0.05em;
       transition: color 0.2s;
     }
@@ -655,7 +669,7 @@
     .footer-links a:hover { color: var(--gold); }
 
     .footer-copy {
-      font-size: 0.72rem;
+      font-size: 0.84rem;
       color: rgba(255,255,255,0.25);
       letter-spacing: 0.05em;
     }
@@ -687,9 +701,6 @@
     }
 
     /* ── LIGHTBOX ── */
-    .product-img {
-      cursor: zoom-in;
-    }
 
     .lightbox {
       display: none;
@@ -1005,9 +1016,9 @@
                   <span data-lang="en">Roasted Salted Hazelnuts</span>
                 </h3>
                 <p class="product-desc">
-                  <span data-lang="ja" class="visible">世界最大のヘーゼルナッツ生産国トルコから。トルコの最大ナッツブランドTadımが厳選した濃厚な風味のローストヘーゼルナッツ。そのまま食べても料理にも。</span>
-                  <span data-lang="tr">Dünyanın en büyük fındık üreticisi Türkiye'nin en kaliteli fındıklarından hazırlanan Tadım Kavrulmuş Fındık; yoğun aromasıyla her anı lezzetlendirir.</span>
-                  <span data-lang="en">Turkey is the world's largest hazelnut producer, and Tadım sources the finest. Rich, deeply roasted, and perfectly salted.</span>
+                  <span data-lang="ja" class="visible">日本で人気のチョコレート菓子に使われているヘーゼルナッツの多くは、実はトルコ産です。世界最大のヘーゼルナッツ生産国トルコから、その原産地ならではの濃厚な風味をそのままお届けします。</span>
+                  <span data-lang="tr">Japonya'da sevilen çikolatalı ürünlerin büyük çoğunluğunda kullanılan fındıklar Türkiye'den gelmektedir. Dünyanın en büyük fındık üreticisi olan Türkiye'nin bu eşsiz ürününü, üretildiği topraklardan doğrudan sunuyoruz.</span>
+                  <span data-lang="en">Most of the hazelnuts in Japan's beloved chocolate snacks come from Turkey — the world's largest hazelnut producer. Now you can enjoy them at the source: roasted, salted, and full of the flavour that the world's confectioners depend on.</span>
                 </p>
               </div>
             </div>
@@ -1031,7 +1042,7 @@
                   <span data-lang="en">Iced Tea 'Didi' </span>
                 </h3>
                 <p class="product-desc">
-                  <span data-lang="ja" class="visible">トルコ最大の紅茶ブランドÇaykurが手がけるアイスティーのディディ。レモン・ベルガモット・桃・イチゴなど豊富なフレーバーで、ボトルより缶かおすすめ。</span>
+                  <span data-lang="ja" class="visible">トルコ最大の紅茶ブランドÇaykur「チャイクル」が手がけるアイスティーのディディ。レモン・ベルガモット・桃・イチゴなど豊富なフレーバーで、ボトルより缶かおすすめ。</span>
                   <span data-lang="tr">Türkiye'nin en büyük çay markası Çaykur'un soğuk çay serisi Didi; limon, bergamot, şeftali ve çilek aromalarıyla kutu ve 1L paket seçeneklerinde sunulmaktadır.</span>
                   <span data-lang="en">By Çaykur, Turkey's largest tea brand. Didi iced tea comes in lemon, bergamot, peach and strawberry — available in cans and 1L cartons.</span>
                 </p>
@@ -1104,7 +1115,7 @@
                   <span data-lang="en">Dried Fruit</span>
                 </p>
                 <h3 class="product-name">
-                  <span data-lang="ja" class="visible">天日干し黒杏（グン・クルス）</span>
+                  <span data-lang="ja" class="visible">天日干し黒杏「ギュン・クルス」</span>
                   <span data-lang="tr">Gün Kurusu Siyah Kuru Kayısı</span>
                   <span data-lang="en">Sun-Dried Black Apricot</span>
                 </h3>
@@ -1125,17 +1136,17 @@
                 alt="Siyah poşet çay" loading="lazy" />
               <div class="product-body">
                 <p class="product-tag">
-                  <span data-lang="ja" class="visible">紅茶・Çaykur</span>
-                  <span data-lang="tr">Siyah Çay · Çaykur</span>
-                  <span data-lang="en">Black Tea · Çaykur</span>
+                  <span data-lang="ja" class="visible">紅茶</span>
+                  <span data-lang="tr">Siyah Çay</span>
+                  <span data-lang="en">Black Tea</span>
                 </p>
                 <h3 class="product-name">
-                  <span data-lang="ja" class="visible">Çaykur ティーバッグ 黒茶</span>
-                  <span data-lang="tr">Çaykur Demlik Poşet Çay</span>
-                  <span data-lang="en">Çaykur Black Tea Bags</span>
+                  <span data-lang="ja" class="visible">トルコの紅茶</span>
+                  <span data-lang="tr">Demlik Poşet Çay</span>
+                  <span data-lang="en">Turkish Black Tea Bags</span>
                 </h3>
                 <p class="product-desc">
-                  <span data-lang="ja" class="visible">トルコは世界一のお茶消費国。トルコ人は朝から晩まで一日中お茶を飲み続けます。そのトルコ最大の紅茶メーカーÇaykurが手がけるティーバッグ。黒海沿岸リゼ産の茶葉を使った、力強くコクのある本場の味です。</span>
+                  <span data-lang="ja" class="visible">トルコは世界一のお茶消費国。トルコ人は朝から晩まで一日中お茶を飲み続けます。そのトルコ最大の紅茶メーカーÇaykur「チャイクル」が手がけるティーバッグ。黒海沿岸リゼ産の茶葉を使った、力強くコクのある本場の味です。</span>
                   <span data-lang="tr">Türkiye, dünyanın en fazla çay tüketen ülkesidir. Türkler sabahtan akşama, günün her saatinde çay içer. Türkiye'nin en büyük çay üreticisi Çaykur'un demlik poşet çayı; Karadeniz kıyısı Rize'nin eşsiz yapraklarından hazırlanmış, güçlü ve derin lezzetiyle gerçek bir Türk çayı deneyimi sunar.</span>
                   <span data-lang="en">Turkey is the world's highest tea-consuming country, and Turks drink it all day, every day — from breakfast to bedtime. Çaykur, Turkey's largest tea producer, brings that culture to your cup with robust black tea bags made from the finest leaves grown along the Black Sea coast of Rize.</span>
                 </p>
