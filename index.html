@@ -715,9 +715,19 @@
 
       .product-card { flex: 0 0 85%; }
 
+      .carousel-btn {
+        padding: 0.75rem 1rem;
+        font-size: 1.4rem;
+        min-width: 44px;
+        min-height: 44px;
+      }
+      .carousel-controls {
+        position: relative;
+        z-index: 5;
+      }
+
       .form-row { grid-template-columns: 1fr; }
     }
-
     @media (prefers-reduced-motion: reduce) {
       .carousel-track { transition: none; }
       .scroll-arrow { animation: none; }
